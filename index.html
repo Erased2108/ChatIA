@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi asistente</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-top">
+        <span class="app-name" id="appName">Mi asistente</span>
+        <button type="button" class="new-chat-btn" id="newChatBtn">+ Nuevo chat</button>
+        <div class="search-wrap">
+          <input type="text" id="searchInput" class="search-input" placeholder="Buscar chats" aria-label="Buscar chats" />
+        </div>
+      </div>
+      <div class="selection-bar" id="selectionBar"></div>
+      <nav class="conversation-list" id="conversationList" aria-label="Conversaciones guardadas"></nav>
+      <div class="sidebar-footer">
+        <button type="button" class="trash-btn" id="trashBtn">
+          <span id="trashLabel">🗑 Papelera</span>
+          <span class="trash-count" id="trashCount"></span>
+        </button>
+        <button type="button" class="settings-btn" id="settingsBtn">
+          <span id="settingsLabel">⚙ Configuración</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="chat-header">
+        <button type="button" class="menu-btn" id="menuBtn" aria-label="Abrir menú">☰</button>
+        <span class="chat-title" id="chatTitle">Nuevo chat</span>
+        <span class="chat-status" id="chatStatus">En línea</span>
+      </header>
+
+      <div class="chat-messages" id="chatMessages" aria-live="polite"></div>
+      <div class="trash-view is-hidden" id="trashView"></div>
+
+      <form class="chat-input-row" id="chatForm">
+        <textarea id="chatInput" rows="1" placeholder="Escribe un mensaje" aria-label="Escribe un mensaje"></textarea>
+        <div class="chat-input-toolbar">
+          <button type="submit" aria-label="Enviar">Enviar</button>
+        </div>
+      </form>
+      <p class="disclaimer" id="disclaimer">Este asistente usa IA y puede cometer errores.</p>
+    </main>
+  </div>
+
+  <div class="modal-backdrop is-hidden" id="settingsBackdrop">
+    <div class="modal-panel" role="dialog" aria-label="Configuración">
+      <div class="modal-header">
+        <span id="settingsTitleText">Configuración</span>
+        <button type="button" class="modal-close" id="settingsClose" aria-label="Cerrar">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="setting-row">
+          <span class="setting-label" id="themeLabelText">Tema</span>
+          <div class="theme-toggle">
+            <button type="button" class="theme-option" id="themeLightBtn">Claro</button>
+            <button type="button" class="theme-option" id="themeDarkBtn">Oscuro</button>
+          </div>
+        </div>
+        <div class="setting-row">
+          <span class="setting-label" id="languageLabelText">Idioma</span>
+          <select id="languageSelect" class="language-select">
+            <option value="es">Español</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+        <div class="shortcuts-block">
+          <span class="setting-label" id="shortcutsTitleText">Atajos de teclado</span>
+          <ul class="shortcuts-list" id="shortcutsList"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
